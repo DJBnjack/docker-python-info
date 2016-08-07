@@ -9,7 +9,9 @@ def hello_world():
     ret += "<table>"
     ret += "<tr><th>Key</th><th>Value</th></tr>"
 
-    for k in os.environ.keys():
+    keys = list(os.environ.keys())
+    keys.sort()
+    for k in keys:
         ret += "<tr><td>" + k + "</td><td>" + os.environ[k] + "</td></tr>"
 
     ret += "</table>"
