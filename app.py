@@ -1,5 +1,11 @@
 from flask import Flask
-import os
+import os, sys
+
+if len(sys.argv) == 2:
+    port = int(sys.argv[1])
+else:
+    port = 5000
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -18,4 +24,4 @@ def hello_world():
     return ret
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0')
+    app.run(debug=True,host='0.0.0.0', port=port)
