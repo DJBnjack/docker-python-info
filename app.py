@@ -15,17 +15,21 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    ret = "<h1>Hello, " + message + "!</h1>"
-    ret += "<h3>This is my environment:</h3>"
-    ret += "<table>"
-    ret += "<tr><th>Key</th><th>Value</th></tr>"
+    ret = "<html>\n"
+    ret += "<body>\n"
+    ret += "  <h1>Hello, " + message + "!</h1>\n"
+    ret += "  <h3>This is my environment:</h3>\n"
+    ret += "  <table>\n"
+    ret += "    <tr><th>Key</th><th>Value</th></tr>\n"
 
     keys = list(os.environ.keys())
     keys.sort()
     for k in keys:
-        ret += "<tr><td>" + k + "</td><td>" + os.environ[k] + "</td></tr>"
+        ret += "    <tr><td>" + k + "</td><td>" + os.environ[k] + "</td></tr>\n"
 
-    ret += "</table>"
+    ret += "  </table>\n"
+    ret += "</body>\n"
+    ret += "</html>\n"
     return ret
 
 if __name__ == '__main__':
